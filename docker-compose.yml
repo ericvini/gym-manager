@@ -7,3 +7,4 @@ services:
       - POSTGRESQL_USERNAME=docker
       - POSTGRESQL_PASSWORD=docker
       - POSTGRESQL_DATABASE=gym_manager-api
+      - DATABASE_URL=postgresql://docker:docker@localhost:5432/gym_manager-api
