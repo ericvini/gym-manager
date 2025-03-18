@@ -9,6 +9,9 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
+  "rules": {
+    "no-empty-function": "off"
+  },
   "plugins": ["@typescript-eslint"],
   "settings": {
     "import/parsers": {

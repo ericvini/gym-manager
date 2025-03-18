@@ -1,7 +1,7 @@
-import { UsersRepository } from "@/repositories/users-repository"
-import { hash } from "bcryptjs"
-import { UsersAlreadyExistsError } from "./users-already-exists-error"
-import { User } from "@prisma/client"
+import { UsersRepository } from '@/repositories/users-repository'
+import { hash } from 'bcryptjs'
+import { UsersAlreadyExistsError } from './erros/users-already-exists-error'
+import { User } from '@prisma/client'
 
 interface RegisterUseCaseRequest {
   name: string
@@ -14,23 +14,24 @@ interface RegisterUseCaseResponse {
 }
 
 export class RegisterUseCase {
-  constructor(
-    private usersRepository: UsersRepository
-  ) { }
+  constructor(private usersRepository: UsersRepository) { }
 
-  async execute({ name, email, password }: RegisterUseCaseRequest): Promise<RegisterUseCaseResponse> {
-    const password_hash = await hash(password, 6)
+  async execute({
+    name,
+    email,
+    password,
+  }: RegisterUseCaseRequest): Promise<RegisterUseCaseResponse> {
+    const passwordHash = await hash(password, 6)
 
     const userWithSameEmail = await this.usersRepository.findByEmail(email)
 
     if (userWithSameEmail) {
       throw new UsersAlreadyExistsError()
     }
-
     const user = await this.usersRepository.create({
       name,
       email,
-      password_hash,
+      password_hash: passwordHash,
     })
 
     return {
@@ -38,5 +39,3 @@ export class RegisterUseCase {
     }
   }
 }
-
-
