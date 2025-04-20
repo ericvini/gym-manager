@@ -14,7 +14,7 @@ describe('Create Gym (e2e)', () => {
   })
 
   it('should be able to create a gym', async () => {
-    const { token } = await createAndAuthenticateUser(app)
+    const { token } = await createAndAuthenticateUser(app, true)
 
     const response = await request(app.server)
       .post('/gyms')
@@ -23,15 +23,10 @@ describe('Create Gym (e2e)', () => {
         title: 'Gym 01',
         description: 'Gym 01 description',
         phone: '11999999999',
-        latirude: -23.123456,
+        latitude: -23.123456,
         longitude: -46.123456,
       })
 
-    expect(response.statusCode).toEqual(200)
-    expect(response.body.user).toEqual(
-      expect.objectContaining({
-        email: 'johndoe@example.com',
-      }),
-    )
+    expect(response.statusCode).toEqual(201)
   })
 })

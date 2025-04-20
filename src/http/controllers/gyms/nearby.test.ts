@@ -14,7 +14,7 @@ describe('Nearby Gyms (e2e)', () => {
   })
 
   it('should be able to list nearby gyms', async () => {
-    const { token } = await createAndAuthenticateUser(app)
+    const { token } = await createAndAuthenticateUser(app, true)
 
     await request(app.server)
       .post('/gyms')
@@ -23,7 +23,7 @@ describe('Nearby Gyms (e2e)', () => {
         title: 'Gym 01',
         description: 'Gym 01 description',
         phone: '11999999999',
-        latirude: -27.2092052,
+        latitude: -27.2092052,
         longitude: -49.6401091,
       })
 
@@ -34,7 +34,7 @@ describe('Nearby Gyms (e2e)', () => {
         title: 'Gym 02',
         description: 'Gym 02 description',
         phone: '11999999999',
-        latirude: -27.0610928,
+        latitude: -27.0610928,
         longitude: -49.5229501,
       })
 

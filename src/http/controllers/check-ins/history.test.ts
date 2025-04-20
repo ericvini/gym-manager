@@ -41,7 +41,7 @@ describe('Check-in History (e2e)', () => {
     })
 
     const response = await request(app.server)
-      .post(`/check-ins/history`)
+      .get(`/check-ins/history`)
       .set('Authorization', `Bearer ${token}`)
       .send()
 

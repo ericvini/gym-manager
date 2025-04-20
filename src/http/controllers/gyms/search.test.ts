@@ -14,7 +14,7 @@ describe('Search Gym (e2e)', () => {
   })
 
   it('should be able to search a gym', async () => {
-    const { token } = await createAndAuthenticateUser(app)
+    const { token } = await createAndAuthenticateUser(app, true)
 
     await request(app.server)
       .post('/gyms')
@@ -23,7 +23,7 @@ describe('Search Gym (e2e)', () => {
         title: 'Gym 01',
         description: 'Gym 01 description',
         phone: '11999999999',
-        latirude: -23.123456,
+        latitude: -23.123456,
         longitude: -46.123456,
       })
 
@@ -34,7 +34,7 @@ describe('Search Gym (e2e)', () => {
         title: 'Gym 02',
         description: 'Gym 02 description',
         phone: '11999999999',
-        latirude: -23.123456,
+        latitude: -23.123456,
         longitude: -46.123456,
       })
 
