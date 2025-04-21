@@ -1,2 +1,2 @@
 # gym-manager
-project for gym management
+project for gym management.
