@@ -29,4 +29,4 @@ jobs:
       - run: npm run test:e2e
         env:
           JWT_SECRET: example
-          DATABASE_URL: "postgresql:docker:docker@localhost:5432/gym_manager-api"
+          DATABASE_URL: "postgresql://docker:docker@localhost:5432/gym_manager-api"
